@@ -24,6 +24,13 @@ const update = () => {
 
 export const listen = async event => {
   console.log(JSON.stringify(event));
+  const { Records } = event;
+  const [
+    {
+      dynamodb: { NewImage },
+    },
+  ] = Records;
+  console.log({ NewImage });
   return {
     statusCode: 200,
     body: 'Hello!',
