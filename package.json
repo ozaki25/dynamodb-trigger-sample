@@ -9,6 +9,7 @@
     "deploy:prod": "sls deploy --stage production"
   },
   "devDependencies": {
+    "aws-sdk": "^2.682.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-runtime": "^6.23.0",
