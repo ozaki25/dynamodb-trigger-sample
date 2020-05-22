@@ -7,7 +7,7 @@ const { DYNAMODB_TABLE } = process.env;
 const put = () => {
   const params = {
     TableName: DYNAMODB_TABLE,
-    Item: { id: String(Date.now) },
+    Item: { id: String(Date.now()) },
   };
   console.log({ params });
   return db.put(params).promise();
