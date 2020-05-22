@@ -21,8 +21,10 @@ provider:
 custom:
   defaultStage: dev
 functions:
-  hello:
-    handler: handler.hello
+  listen:
+    handler: handler.listen
+  trigger:
+    handler: handler.trigger
 resources:
   Resources:
     ConnpassHistory:

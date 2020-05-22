@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Serverless webpack example using ecma script",
   "scripts": {
-    "invoke": "sls invoke local -f hello",
-    "invoke:aws": "sls invoke -f hello",
+    "invoke": "sls invoke local -f",
+    "invoke:aws": "sls invoke -f",
     "deploy": "sls deploy",
     "deploy:prod": "sls deploy --stage production"
   },
