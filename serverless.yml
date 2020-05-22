@@ -10,6 +10,14 @@ provider:
   profile: aa
   environment:
     DYNAMODB_TABLE: ${self:service.name}-${self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetRecords
+        - dynamodb:GetShardIterator
+        - dynamodb:DescribeStream
+        - dynamodb:ListStreams
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}*/stream/*'
 custom:
   defaultStage: dev
 functions:

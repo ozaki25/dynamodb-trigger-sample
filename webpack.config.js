@@ -9,6 +9,7 @@ module.exports = {
     filename: '[name].js',
     path: path.join(__dirname, '.webpack'),
   },
+  externals: ['aws-sdk'],
   mode: 'development',
   target: 'node',
   module: {
