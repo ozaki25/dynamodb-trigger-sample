@@ -1,0 +1,15 @@
+service:
+  name: dynamo-trigger-sample-oz
+plugins:
+  - serverless-webpack
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, self:custom.defaultStage}
+  region: ap-northeast-1
+  profile: aa
+custom:
+  defaultStage: dev
+functions:
+  hello:
+    handler: handler.hello

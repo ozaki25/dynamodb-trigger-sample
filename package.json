@@ -1,0 +1,22 @@
+{
+  "name": "dynamo-trigger-sample-oz",
+  "version": "1.0.0",
+  "description": "Serverless webpack example using ecma script",
+  "scripts": {
+    "invoke": "sls invoke local -f hello",
+    "invoke:aws": "sls invoke -f hello",
+    "deploy": "sls deploy",
+    "deploy:prod": "sls deploy --stage production"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "serverless-webpack": "^5.3.1",
+    "webpack": "^4.35.2"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT"
+}
