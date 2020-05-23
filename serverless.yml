@@ -19,19 +19,31 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}*'
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}'
     - Effect: Allow
       Action:
         - dynamodb:GetRecords
         - dynamodb:GetShardIterator
         - dynamodb:DescribeStream
         - dynamodb:ListStreams
-      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}*/stream/*'
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}/stream/*'
 custom:
   defaultStage: dev
 functions:
   listen:
     handler: handler.listen
+    events:
+      - stream:
+        type: dynamodb
+        batchSize: 1
+        maximumRetryAttempts: 0
+        enabled: true
+        arn:
+          Fn::GetAtt:
+            [
+              Sample,
+              'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}/stream/*',
+            ]
   trigger:
     handler: handler.trigger
 resources:
@@ -49,3 +61,5 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
